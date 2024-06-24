@@ -13,3 +13,17 @@ This simple application works, but with very old-style monolithic codebase, so d
 
   - easier to work with
   - more maintainable
+
+
+## 3. Found Bad Practices
+
+  - the News and Comment class has repetitive code
+    - created an abstract class to for repetitive codes and moved the repetive codes for both class
+    - more scaleable if any more content class to be added in the future
+  - Implemented Interface for Comment and News  
+    - created a contract for both contracts for their unique properties
+    - if future classes share unique properties as those 2 class, those interfaces can be used
+  - repetitive getInstance for Comment and News Manager
+    - created a singleton class for better modularity and fix the repetitive code
+
+  
