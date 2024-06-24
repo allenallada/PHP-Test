@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Utils;
+namespace App\Utils\Managers;
 
 use App\Utils\Singleton\ManagerSingleton;
 use App\Utils\CommentManager;
+use App\Utils\QueryBuilder;
 use App\Class\News;
 
 class NewsManager extends ManagerSingleton

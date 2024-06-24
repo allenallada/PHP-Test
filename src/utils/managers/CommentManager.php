@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Utils;
+namespace App\Utils\Managers;
 
 use App\Utils\Singleton\ManagerSingleton;
-
+use App\Utils\QueryBuilder;
 use App\Class\Comment;
 
 class CommentManager extends ManagerSingleton

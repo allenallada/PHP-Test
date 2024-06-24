@@ -4,8 +4,8 @@ define('ROOT', __DIR__);
 
 require_once(ROOT . '/vendor/autoload.php');
 
-use App\Utils\NewsManager;
-use App\Utils\CommentManager;
+use App\Utils\Managers\NewsManager;
+use App\Utils\Managers\CommentManager;
 
 foreach (NewsManager::getInstance()->listNews() as $news) {
 	echo("############ NEWS " . $news->getTitle() . " ############\n");

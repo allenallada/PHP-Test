@@ -2,8 +2,8 @@
 
 namespace App\Class;
 
-use App\Class\Abstracts\Content;
 use App\Class\Interfaces\WithTitleInterface;
+use App\Class\Abstracts\Content;
 
 /**
  * News Class
