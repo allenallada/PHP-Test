@@ -4,14 +4,29 @@ require_once(ROOT . '/utils/DB.php');
 
 class QueryBuilder
 {
+    /**
+     * columns to select
+     */
     private array $select = [];
 
+    /**
+     * columns to insert
+     */
     private array $insertColumns = [];
 
+    /**
+     * columns values to insert
+     */
     private array $insertValues = [];
 
+    /**
+     * target table
+     */
     private string $table = '';
 
+    /**
+     * DB property
+     */
     private DB $db;
 
     public function __construct()
