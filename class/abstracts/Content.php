@@ -5,18 +5,16 @@
  */
 abstract class Content
 {
-	protected $id;
+	protected int $id;
 
-	protected $body;
+	protected string $body;
 
-	protected $createdAt;
-
-	protected $newsId;
+	protected string $createdAt;
 
 	/**
 	 * set Content ID
 	 */
-	public function setId($id)
+	public function setId(int $id): self
 	{
 		$this->id = $id;
 
@@ -26,7 +24,7 @@ abstract class Content
 	/**
 	 * get Content ID
 	 */
-	public function getId()
+	public function getId(): int
 	{
 		return $this->id;
 	}
@@ -34,7 +32,7 @@ abstract class Content
 	/**
 	 * set Content Body
 	 */
-	public function setBody($body)
+	public function setBody(string $body): self
 	{
 		$this->body = $body;
 
@@ -44,7 +42,7 @@ abstract class Content
 	/**
 	 * get Content Body
 	 */
-	public function getBody()
+	public function getBody(): string
 	{
 		return $this->body;
 	}
@@ -52,7 +50,7 @@ abstract class Content
 	/**
 	 * set Created at of Content
 	 */
-	public function setCreatedAt($createdAt)
+	public function setCreatedAt($createdAt): self
 	{
 		$this->createdAt = $createdAt;
 
@@ -62,7 +60,7 @@ abstract class Content
 	/**
 	 * get Created at of Content
 	 */
-	public function getCreatedAt()
+	public function getCreatedAt(): string
 	{
 		return $this->createdAt;
 	}

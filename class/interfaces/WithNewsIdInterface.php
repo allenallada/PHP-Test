@@ -5,7 +5,7 @@
  */
 interface WithNewsIdInterface
 {
-	public function setNewsId(string $newsId);
-	
-	public function getNewsId();
+	public function setNewsId(int $newsId): self;
+
+	public function getNewsId(): int;
 }

@@ -5,7 +5,7 @@
  */
 interface WithTitleInterface
 {
-	public function setTitle(string $title);
+	public function setTitle(string $title): self;
 
-	public function getTitle();
+	public function getTitle(): string;
 }

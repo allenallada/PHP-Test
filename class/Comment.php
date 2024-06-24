@@ -5,12 +5,12 @@
  */
 class Comment extends Content implements WithNewsIdInterface
 {
-	protected $newsId;
+	protected int $newsId;
 
 	/**
 	 * set the News ID of the Comment
 	 */
-	public function setNewsId($newsId)
+	public function setNewsId(int $newsId): self
 	{
 		$this->newsId = $newsId;
 
@@ -20,7 +20,7 @@ class Comment extends Content implements WithNewsIdInterface
 	/**
 	 * get the News ID of the Comment
 	 */
-	public function getNewsId()
+	public function getNewsId(): int
 	{
 		return $this->newsId;
 	}

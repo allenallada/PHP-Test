@@ -5,12 +5,12 @@
  */
 class News extends Content implements WithTitleInterface
 {
-	protected $title;
+	protected string $title;
 
 	/**
 	 * set the title of the News
 	 */
-	public function setTitle($title)
+	public function setTitle(string $title): self
 	{
 		$this->title = $title;
 
@@ -20,7 +20,7 @@ class News extends Content implements WithTitleInterface
 	/**
 	 * get the title of the News
 	 */
-	public function getTitle()
+	public function getTitle(): string
 	{
 		return $this->title;
 	}
