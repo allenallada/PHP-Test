@@ -1,6 +1,7 @@
 <?php
 
 define('ROOT', __DIR__);
+require_once(ROOT . '/utils/singleton/ManagerSingleton.php');
 require_once(ROOT . '/utils/NewsManager.php');
 require_once(ROOT . '/utils/CommentManager.php');
 require_once(ROOT . '/class/abstracts/Content.php');

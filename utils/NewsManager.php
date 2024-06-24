@@ -1,23 +1,17 @@
 <?php
 
-class NewsManager
+class NewsManager extends ManagerSingleton
 {
-	private static $instance = null;
+	/**
+	 * table name "news"
+	 */
+	protected string $table = 'news';
 
-	private function __construct()
+	protected function __construct()
 	{
-		require_once(ROOT . '/utils/DB.php');
+		parent::__construct();
 		require_once(ROOT . '/utils/CommentManager.php');
 		require_once(ROOT . '/class/News.php');
-	}
-
-	public static function getInstance()
-	{
-		if (null === self::$instance) {
-			$c = __CLASS__;
-			self::$instance = new $c;
-		}
-		return self::$instance;
 	}
 
 	/**
@@ -46,7 +40,7 @@ class NewsManager
 	public function addNews($title, $body)
 	{
 		$db = DB::getInstance();
-		$sql = "INSERT INTO `news` (`title`, `body`, `created_at`) VALUES('". $title . "','" . $body . "','" . date('Y-m-d') . "')";
+		$sql = "INSERT INTO $this->table (`title`, `body`, `created_at`) VALUES('" . $title . "','" . $body . "','" . date('Y-m-d') . "')";
 		$db->exec($sql);
 		return $db->lastInsertId($sql);
 	}

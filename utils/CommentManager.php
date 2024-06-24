@@ -1,28 +1,25 @@
 <?php
 
-class CommentManager
+class CommentManager extends ManagerSingleton
 {
-	private static $instance = null;
+	/**
+	 * table name "comment"
+	 */
+	protected string $table = 'comment';
 
-	private function __construct()
+	protected function __construct()
 	{
-		require_once(ROOT . '/utils/DB.php');
+		parent::__construct();
 		require_once(ROOT . '/class/Comment.php');
 	}
 
-	public static function getInstance()
-	{
-		if (null === self::$instance) {
-			$c = __CLASS__;
-			self::$instance = new $c;
-		}
-		return self::$instance;
-	}
-
+	/**
+	 * list all comments
+	 */
 	public function listComments()
 	{
 		$db = DB::getInstance();
-		$rows = $db->select('SELECT * FROM `comment`');
+		$rows = $db->select("SELECT * FROM $this->table");
 
 		$comments = [];
 		foreach($rows as $row) {
@@ -36,18 +33,24 @@ class CommentManager
 		return $comments;
 	}
 
+	/**
+	 * add News comment
+	 */
 	public function addCommentForNews($body, $newsId)
 	{
 		$db = DB::getInstance();
-		$sql = "INSERT INTO `comment` (`body`, `created_at`, `news_id`) VALUES('". $body . "','" . date('Y-m-d') . "','" . $newsId . "')";
+		$sql = "INSERT INTO $this->table (`body`, `created_at`, `news_id`) VALUES('" . $body . "','" . date('Y-m-d') . "','" . $newsId . "')";
 		$db->exec($sql);
 		return $db->lastInsertId($sql);
 	}
 
+	/**
+	 * delete a news comment
+	 */
 	public function deleteComment($id)
 	{
 		$db = DB::getInstance();
-		$sql = "DELETE FROM `comment` WHERE `id`=" . $id;
+		$sql = "DELETE FROM $this->table WHERE `id`=" . $id;
 		return $db->exec($sql);
 	}
 }
