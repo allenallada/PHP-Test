@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Class\Interfaces;
+
 /**
  * Class with Title contract
  */

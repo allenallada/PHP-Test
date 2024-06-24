@@ -1,5 +1,8 @@
 <?php
 
+
+namespace App\Utils;
+
 class DB
 {
 	private $pdo;

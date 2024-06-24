@@ -1,5 +1,12 @@
 <?php
 
+
+namespace App\Utils;
+
+use App\Utils\Singleton\ManagerSingleton;
+use App\Utils\CommentManager;
+use App\Class\News;
+
 class NewsManager extends ManagerSingleton
 {
 	/**
@@ -7,16 +14,9 @@ class NewsManager extends ManagerSingleton
 	 */
 	protected string $table = 'news';
 
-	protected function __construct()
-	{
-		parent::__construct();
-		require_once(ROOT . '/utils/CommentManager.php');
-		require_once(ROOT . '/class/News.php');
-	}
-
 	/**
-	* list all news
-	*/
+	 * list all news
+	 */
 	public function listNews()
 	{
 		$query = QueryBuilder::newQuery();
@@ -28,20 +28,20 @@ class NewsManager extends ManagerSingleton
 
 		$news = [];
 
-		foreach($rows as $row) {
+		foreach ($rows as $row) {
 			$n = new News();
 			$news[] = $n->setId($row['id'])
-			  ->setTitle($row['title'])
-			  ->setBody($row['body'])
-			  ->setCreatedAt($row['created_at']);
+				->setTitle($row['title'])
+				->setBody($row['body'])
+				->setCreatedAt($row['created_at']);
 		}
 
 		return $news;
 	}
 
 	/**
-	* add a record in news table
-	*/
+	 * add a record in news table
+	 */
 	public function addNews($title, $body)
 	{
 		$query = QueryBuilder::newQuery();
@@ -59,8 +59,8 @@ class NewsManager extends ManagerSingleton
 	}
 
 	/**
-	* deletes a news, and also linked comments
-	*/
+	 * deletes a news, and also linked comments
+	 */
 	public function deleteNews($id)
 	{
 		$comments = CommentManager::getInstance()->listComments();

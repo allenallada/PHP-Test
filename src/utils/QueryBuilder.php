@@ -1,6 +1,9 @@
 <?php
 
-require_once(ROOT . '/utils/DB.php');
+
+namespace App\Utils;
+
+use App\Utils\DB;
 
 class QueryBuilder
 {

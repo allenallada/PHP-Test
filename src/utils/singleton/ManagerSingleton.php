@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Utils\Singleton;
+
 class ManagerSingleton
 {
     /**
@@ -12,14 +14,6 @@ class ManagerSingleton
      * override in child class
      */
     protected string $table = '';
-
-    /**
-     * protected construct to prevent instantiation
-     */
-    protected function __construct()
-    {
-        //empty, nothing to do here yet
-    }
 
     /**
      * Get Manager Singleton instance

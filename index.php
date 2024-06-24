@@ -1,13 +1,11 @@
 <?php
 
 define('ROOT', __DIR__);
-require_once(ROOT . '/utils/singleton/ManagerSingleton.php');
-require_once(ROOT . '/utils/QueryBuilder.php');
-require_once(ROOT . '/utils/NewsManager.php');
-require_once(ROOT . '/utils/CommentManager.php');
-require_once(ROOT . '/class/abstracts/Content.php');
-require_once(ROOT . '/class/interfaces/WithTitleInterface.php');
-require_once(ROOT . '/class/interfaces/WithNewsIdInterface.php');
+
+require_once(ROOT . '/vendor/autoload.php');
+
+use App\Utils\NewsManager;
+use App\Utils\CommentManager;
 
 foreach (NewsManager::getInstance()->listNews() as $news) {
 	echo("############ NEWS " . $news->getTitle() . " ############\n");

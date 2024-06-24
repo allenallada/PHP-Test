@@ -1,5 +1,8 @@
 <?php
 
+
+namespace App\Class\Interfaces;
+
 /**
  * Class with News ID contract
  */

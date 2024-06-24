@@ -1,5 +1,8 @@
 <?php
 
+
+namespace App\Class\Abstracts;
+
 /**
  * Abstract class for Content related Classes
  */
@@ -28,7 +31,7 @@ abstract class Content
 	{
 		return $this->id;
 	}
-    
+
 	/**
 	 * set Content Body
 	 */

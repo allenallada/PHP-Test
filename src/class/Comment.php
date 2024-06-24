@@ -1,5 +1,11 @@
 <?php
 
+
+namespace App\Class;
+
+use App\Class\Abstracts\Content;
+use App\Class\Interfaces\WithNewsIdInterface;
+
 /**
  * Comment class
  */

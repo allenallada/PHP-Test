@@ -1,17 +1,18 @@
 <?php
 
+
+namespace App\Utils;
+
+use App\Utils\Singleton\ManagerSingleton;
+
+use App\Class\Comment;
+
 class CommentManager extends ManagerSingleton
 {
 	/**
 	 * table name "comment"
 	 */
 	protected string $table = 'comment';
-
-	protected function __construct()
-	{
-		parent::__construct();
-		require_once(ROOT . '/class/Comment.php');
-	}
 
 	/**
 	 * list all comments
@@ -26,12 +27,12 @@ class CommentManager extends ManagerSingleton
 			->get();
 
 		$comments = [];
-		foreach($rows as $row) {
+		foreach ($rows as $row) {
 			$n = new Comment();
 			$comments[] = $n->setId($row['id'])
-			  ->setBody($row['body'])
-			  ->setCreatedAt($row['created_at'])
-			  ->setNewsId($row['news_id']);
+				->setBody($row['body'])
+				->setCreatedAt($row['created_at'])
+				->setNewsId($row['news_id']);
 		}
 
 		return $comments;
