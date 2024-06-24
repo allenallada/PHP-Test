@@ -19,10 +19,15 @@ class NewsManager extends ManagerSingleton
 	*/
 	public function listNews()
 	{
-		$db = DB::getInstance();
-		$rows = $db->select('SELECT * FROM `news`');
+		$query = QueryBuilder::newQuery();
+
+		$rows = $query
+			->table($this->table)
+			->selectAll()
+			->get();
 
 		$news = [];
+
 		foreach($rows as $row) {
 			$n = new News();
 			$news[] = $n->setId($row['id'])
@@ -39,10 +44,18 @@ class NewsManager extends ManagerSingleton
 	*/
 	public function addNews($title, $body)
 	{
-		$db = DB::getInstance();
-		$sql = "INSERT INTO $this->table (`title`, `body`, `created_at`) VALUES('" . $title . "','" . $body . "','" . date('Y-m-d') . "')";
-		$db->exec($sql);
-		return $db->lastInsertId($sql);
+		$query = QueryBuilder::newQuery();
+
+		return $query
+			->table($this->table)
+			->addInsert(
+				[
+					'title'      => $title,
+					'body'       => $body,
+					'created_at' => date('Y-m-d'),
+				]
+			)
+			->insert();
 	}
 
 	/**
@@ -59,12 +72,8 @@ class NewsManager extends ManagerSingleton
 			}
 		}
 
-		foreach($idsToDelete as $id) {
-			CommentManager::getInstance()->deleteComment($id);
-		}
+		CommentManager::getInstance()->deleteComment($idsToDelete);
 
-		$db = DB::getInstance();
-		$sql = "DELETE FROM `news` WHERE `id`=" . $id;
-		return $db->exec($sql);
+		return QueryBuilder::newQuery()->delete($id);
 	}
 }

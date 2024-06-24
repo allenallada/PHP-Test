@@ -23,7 +23,9 @@ This simple application works, but with very old-style monolithic codebase, so d
   - Implemented Interface for Comment and News  
     - created a contract for both contracts for their unique properties
     - if future classes share unique properties as those 2 class, those interfaces can be used
-  - repetitive getInstance for Comment and News Manager
+  - Repetitive getInstance for Comment and News Manager
     - created a singleton class for better modularity and fix the repetitive code
+  - Manual Creation of Query for each manager
+    - created a Query builder for reusability
 
   

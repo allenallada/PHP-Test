@@ -18,8 +18,12 @@ class CommentManager extends ManagerSingleton
 	 */
 	public function listComments()
 	{
-		$db = DB::getInstance();
-		$rows = $db->select("SELECT * FROM $this->table");
+		$query = QueryBuilder::newQuery();
+
+		$rows = $query
+			->table($this->table)
+			->selectAll()
+			->get();
 
 		$comments = [];
 		foreach($rows as $row) {
@@ -38,10 +42,18 @@ class CommentManager extends ManagerSingleton
 	 */
 	public function addCommentForNews($body, $newsId)
 	{
-		$db = DB::getInstance();
-		$sql = "INSERT INTO $this->table (`body`, `created_at`, `news_id`) VALUES('" . $body . "','" . date('Y-m-d') . "','" . $newsId . "')";
-		$db->exec($sql);
-		return $db->lastInsertId($sql);
+		$query = QueryBuilder::newQuery();
+
+		return $query
+			->table($this->table)
+			->addInsert(
+				[
+					'body'       => $body,
+					'news_id'    => $newsId,
+					'created_at' => date('Y-m-d'),
+				]
+			)
+			->insert();
 	}
 
 	/**
@@ -49,8 +61,6 @@ class CommentManager extends ManagerSingleton
 	 */
 	public function deleteComment($id)
 	{
-		$db = DB::getInstance();
-		$sql = "DELETE FROM $this->table WHERE `id`=" . $id;
-		return $db->exec($sql);
+		return QueryBuilder::newQuery()->delete($id);
 	}
 }

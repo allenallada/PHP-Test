@@ -18,7 +18,7 @@ class ManagerSingleton
      */
     protected function __construct()
     {
-        require_once(ROOT . '/utils/DB.php');
+        //empty, nothing to do here yet
     }
 
     /**
