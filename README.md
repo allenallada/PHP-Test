@@ -27,5 +27,7 @@ This simple application works, but with very old-style monolithic codebase, so d
     - created a singleton class for better modularity and fix the repetitive code
   - Manual Creation of Query for each manager
     - created a Query builder for reusability
+  - Not using Namespacing
+    - Updated code to use namespacing for proper class imports
 
   
